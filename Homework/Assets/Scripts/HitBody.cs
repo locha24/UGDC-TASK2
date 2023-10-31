@@ -6,13 +6,7 @@ using UnityEngine;
 public class HitBody : MonoBehaviour
 {
     [SerializeField]
-    private float hp;
-
-    [SerializeField]
-    private ParticleSystem explosion;
-
-    [SerializeField]
-    private Renderer renderer;
+    private float hp = 100;
 
     [SerializeField]
     private Collider collider;
@@ -24,12 +18,15 @@ public class HitBody : MonoBehaviour
         {
             Die();
         }
+        if (hp < 100)
+        {
+            Debug.Log(hp);
+        }
     }
 
     private void Die()
     {
-        explosion.Play();
-        renderer.enabled = false;
+        GetComponent<Renderer>().enabled = false;
         collider.enabled = false;
     }
 }
